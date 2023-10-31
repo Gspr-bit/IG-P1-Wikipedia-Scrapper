@@ -16,7 +16,7 @@ namespace IG_P1_Wikipedia_Scrapper
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormMain());
         }
     }
 }
