@@ -31,18 +31,18 @@
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.BtnSearch = new System.Windows.Forms.Button();
             this.PnlMain = new System.Windows.Forms.Panel();
-            this.PnlTop = new System.Windows.Forms.Panel();
             this.PnlBottom = new System.Windows.Forms.Panel();
-            this.PnlLeft = new System.Windows.Forms.Panel();
             this.PnlRight = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TreeIndex = new System.Windows.Forms.TreeView();
             this.RtbMain = new System.Windows.Forms.RichTextBox();
+            this.PnlLeft = new System.Windows.Forms.Panel();
+            this.TreeIndex = new System.Windows.Forms.TreeView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PnlTop = new System.Windows.Forms.Panel();
             this.PnlMain.SuspendLayout();
-            this.PnlTop.SuspendLayout();
             this.PnlBottom.SuspendLayout();
-            this.PnlLeft.SuspendLayout();
             this.PnlRight.SuspendLayout();
+            this.PnlLeft.SuspendLayout();
+            this.PnlTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // TxtSearch
@@ -60,6 +60,7 @@
             this.BtnSearch.TabIndex = 1;
             this.BtnSearch.Text = "Buscar";
             this.BtnSearch.UseVisualStyleBackColor = true;
+            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // PnlMain
             // 
@@ -71,16 +72,6 @@
             this.PnlMain.Size = new System.Drawing.Size(800, 450);
             this.PnlMain.TabIndex = 2;
             // 
-            // PnlTop
-            // 
-            this.PnlTop.Controls.Add(this.TxtSearch);
-            this.PnlTop.Controls.Add(this.BtnSearch);
-            this.PnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PnlTop.Location = new System.Drawing.Point(0, 0);
-            this.PnlTop.Name = "PnlTop";
-            this.PnlTop.Size = new System.Drawing.Size(800, 52);
-            this.PnlTop.TabIndex = 2;
-            // 
             // PnlBottom
             // 
             this.PnlBottom.Controls.Add(this.PnlRight);
@@ -90,6 +81,24 @@
             this.PnlBottom.Name = "PnlBottom";
             this.PnlBottom.Size = new System.Drawing.Size(800, 398);
             this.PnlBottom.TabIndex = 3;
+            // 
+            // PnlRight
+            // 
+            this.PnlRight.Controls.Add(this.RtbMain);
+            this.PnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PnlRight.Location = new System.Drawing.Point(200, 0);
+            this.PnlRight.Name = "PnlRight";
+            this.PnlRight.Size = new System.Drawing.Size(600, 398);
+            this.PnlRight.TabIndex = 1;
+            // 
+            // RtbMain
+            // 
+            this.RtbMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RtbMain.Location = new System.Drawing.Point(0, 0);
+            this.RtbMain.Name = "RtbMain";
+            this.RtbMain.Size = new System.Drawing.Size(600, 398);
+            this.RtbMain.TabIndex = 0;
+            this.RtbMain.Text = "";
             // 
             // PnlLeft
             // 
@@ -101,14 +110,12 @@
             this.PnlLeft.Size = new System.Drawing.Size(200, 398);
             this.PnlLeft.TabIndex = 0;
             // 
-            // PnlRight
+            // TreeIndex
             // 
-            this.PnlRight.Controls.Add(this.RtbMain);
-            this.PnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlRight.Location = new System.Drawing.Point(200, 0);
-            this.PnlRight.Name = "PnlRight";
-            this.PnlRight.Size = new System.Drawing.Size(600, 398);
-            this.PnlRight.TabIndex = 1;
+            this.TreeIndex.Location = new System.Drawing.Point(4, 24);
+            this.TreeIndex.Name = "TreeIndex";
+            this.TreeIndex.Size = new System.Drawing.Size(121, 97);
+            this.TreeIndex.TabIndex = 1;
             // 
             // label1
             // 
@@ -119,21 +126,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Índice";
             // 
-            // TreeIndex
+            // PnlTop
             // 
-            this.TreeIndex.Location = new System.Drawing.Point(4, 24);
-            this.TreeIndex.Name = "TreeIndex";
-            this.TreeIndex.Size = new System.Drawing.Size(121, 97);
-            this.TreeIndex.TabIndex = 1;
-            // 
-            // RtbMain
-            // 
-            this.RtbMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RtbMain.Location = new System.Drawing.Point(0, 0);
-            this.RtbMain.Name = "RtbMain";
-            this.RtbMain.Size = new System.Drawing.Size(600, 398);
-            this.RtbMain.TabIndex = 0;
-            this.RtbMain.Text = "";
+            this.PnlTop.Controls.Add(this.TxtSearch);
+            this.PnlTop.Controls.Add(this.BtnSearch);
+            this.PnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PnlTop.Location = new System.Drawing.Point(0, 0);
+            this.PnlTop.Name = "PnlTop";
+            this.PnlTop.Size = new System.Drawing.Size(800, 52);
+            this.PnlTop.TabIndex = 2;
             // 
             // FormMain
             // 
@@ -144,12 +145,12 @@
             this.Name = "FormMain";
             this.Text = "Buscar";
             this.PnlMain.ResumeLayout(false);
-            this.PnlTop.ResumeLayout(false);
-            this.PnlTop.PerformLayout();
             this.PnlBottom.ResumeLayout(false);
+            this.PnlRight.ResumeLayout(false);
             this.PnlLeft.ResumeLayout(false);
             this.PnlLeft.PerformLayout();
-            this.PnlRight.ResumeLayout(false);
+            this.PnlTop.ResumeLayout(false);
+            this.PnlTop.PerformLayout();
             this.ResumeLayout(false);
 
         }

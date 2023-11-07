@@ -16,5 +16,10 @@ namespace IG_P1_Wikipedia_Scrapper
         {
             InitializeComponent();
         }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            Scrapper.Query(TxtSearch.Text);
+        }
     }
 }
