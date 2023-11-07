@@ -3,26 +3,20 @@ using System.Collections.Generic;
 
 namespace IG_P1_Wikipedia_Scrapper
 {
-    public struct Href
+    public struct IndexElement
     {
-        public string link, text;
+        public string Link, Text;
 
-        public Href(string link, string text)
+        public IndexElement(string link, string text)
         {
-            this.link = link;
-            this.text = text;
+            this.Link = link;
+            this.Text = text;
         }
     }
     
     public class WikipediaPage
     {
-        public List<Href> Index;
-        public Hashtable Paragraphs;
-
-        public WikipediaPage()
-        {
-            Index = new List<Href>();
-            Paragraphs = new Hashtable();
-        }
+        public List<IndexElement> Index = new List<IndexElement>();
+        public Dictionary<string, string> Paragraphs = new Dictionary<string, string>();
     }
 }

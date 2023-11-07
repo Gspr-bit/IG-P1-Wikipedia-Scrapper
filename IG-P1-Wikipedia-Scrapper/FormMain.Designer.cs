@@ -54,7 +54,7 @@
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(713, 12);
+            this.BtnSearch.Location = new System.Drawing.Point(1128, 12);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(75, 23);
             this.BtnSearch.TabIndex = 1;
@@ -69,7 +69,7 @@
             this.PnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlMain.Location = new System.Drawing.Point(0, 0);
             this.PnlMain.Name = "PnlMain";
-            this.PnlMain.Size = new System.Drawing.Size(800, 450);
+            this.PnlMain.Size = new System.Drawing.Size(1215, 774);
             this.PnlMain.TabIndex = 2;
             // 
             // PnlBottom
@@ -79,7 +79,7 @@
             this.PnlBottom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlBottom.Location = new System.Drawing.Point(0, 52);
             this.PnlBottom.Name = "PnlBottom";
-            this.PnlBottom.Size = new System.Drawing.Size(800, 398);
+            this.PnlBottom.Size = new System.Drawing.Size(1215, 722);
             this.PnlBottom.TabIndex = 3;
             // 
             // PnlRight
@@ -88,7 +88,7 @@
             this.PnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlRight.Location = new System.Drawing.Point(200, 0);
             this.PnlRight.Name = "PnlRight";
-            this.PnlRight.Size = new System.Drawing.Size(600, 398);
+            this.PnlRight.Size = new System.Drawing.Size(1015, 722);
             this.PnlRight.TabIndex = 1;
             // 
             // RtbMain
@@ -96,7 +96,7 @@
             this.RtbMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RtbMain.Location = new System.Drawing.Point(0, 0);
             this.RtbMain.Name = "RtbMain";
-            this.RtbMain.Size = new System.Drawing.Size(600, 398);
+            this.RtbMain.Size = new System.Drawing.Size(1015, 722);
             this.RtbMain.TabIndex = 0;
             this.RtbMain.Text = "";
             // 
@@ -107,15 +107,17 @@
             this.PnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.PnlLeft.Location = new System.Drawing.Point(0, 0);
             this.PnlLeft.Name = "PnlLeft";
-            this.PnlLeft.Size = new System.Drawing.Size(200, 398);
+            this.PnlLeft.Size = new System.Drawing.Size(200, 722);
             this.PnlLeft.TabIndex = 0;
             // 
             // TreeIndex
             // 
-            this.TreeIndex.Location = new System.Drawing.Point(4, 24);
+            this.TreeIndex.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TreeIndex.Location = new System.Drawing.Point(0, 0);
             this.TreeIndex.Name = "TreeIndex";
-            this.TreeIndex.Size = new System.Drawing.Size(121, 97);
+            this.TreeIndex.Size = new System.Drawing.Size(200, 722);
             this.TreeIndex.TabIndex = 1;
+            this.TreeIndex.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeIndex_AfterSelect);
             // 
             // label1
             // 
@@ -133,14 +135,14 @@
             this.PnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlTop.Location = new System.Drawing.Point(0, 0);
             this.PnlTop.Name = "PnlTop";
-            this.PnlTop.Size = new System.Drawing.Size(800, 52);
+            this.PnlTop.Size = new System.Drawing.Size(1215, 52);
             this.PnlTop.TabIndex = 2;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1215, 774);
             this.Controls.Add(this.PnlMain);
             this.Name = "FormMain";
             this.Text = "Buscar";
@@ -152,7 +154,6 @@
             this.PnlTop.ResumeLayout(false);
             this.PnlTop.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
