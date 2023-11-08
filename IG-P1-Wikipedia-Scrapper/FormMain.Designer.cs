@@ -33,11 +33,11 @@
             this.PnlMain = new System.Windows.Forms.Panel();
             this.PnlBottom = new System.Windows.Forms.Panel();
             this.PnlRight = new System.Windows.Forms.Panel();
-            this.RtbMain = new System.Windows.Forms.RichTextBox();
             this.PnlLeft = new System.Windows.Forms.Panel();
             this.TreeIndex = new System.Windows.Forms.TreeView();
             this.label1 = new System.Windows.Forms.Label();
             this.PnlTop = new System.Windows.Forms.Panel();
+            this.MainWebBrowser = new System.Windows.Forms.WebBrowser();
             this.PnlMain.SuspendLayout();
             this.PnlBottom.SuspendLayout();
             this.PnlRight.SuspendLayout();
@@ -84,21 +84,12 @@
             // 
             // PnlRight
             // 
-            this.PnlRight.Controls.Add(this.RtbMain);
+            this.PnlRight.Controls.Add(this.MainWebBrowser);
             this.PnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlRight.Location = new System.Drawing.Point(200, 0);
             this.PnlRight.Name = "PnlRight";
             this.PnlRight.Size = new System.Drawing.Size(1015, 722);
             this.PnlRight.TabIndex = 1;
-            // 
-            // RtbMain
-            // 
-            this.RtbMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RtbMain.Location = new System.Drawing.Point(0, 0);
-            this.RtbMain.Name = "RtbMain";
-            this.RtbMain.Size = new System.Drawing.Size(1015, 722);
-            this.RtbMain.TabIndex = 0;
-            this.RtbMain.Text = "";
             // 
             // PnlLeft
             // 
@@ -138,6 +129,15 @@
             this.PnlTop.Size = new System.Drawing.Size(1215, 52);
             this.PnlTop.TabIndex = 2;
             // 
+            // MainWebBrowser
+            // 
+            this.MainWebBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainWebBrowser.Location = new System.Drawing.Point(0, 0);
+            this.MainWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.MainWebBrowser.Name = "MainWebBrowser";
+            this.MainWebBrowser.Size = new System.Drawing.Size(1015, 722);
+            this.MainWebBrowser.TabIndex = 0;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,6 +156,8 @@
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.WebBrowser MainWebBrowser;
+
         #endregion
 
         private System.Windows.Forms.TextBox TxtSearch;
@@ -167,7 +169,6 @@
         private System.Windows.Forms.Panel PnlLeft;
         private System.Windows.Forms.TreeView TreeIndex;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox RtbMain;
     }
 }
 

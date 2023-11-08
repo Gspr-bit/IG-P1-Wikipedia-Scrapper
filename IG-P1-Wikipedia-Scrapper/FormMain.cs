@@ -45,7 +45,10 @@ namespace IG_P1_Wikipedia_Scrapper
         {
             string text = "";
             if (page.Paragraphs.TryGetValue(title, out text))
-                RtbMain.Text = text;
+            {
+                // RtbMain.Text = text;
+                MainWebBrowser.DocumentText = text;
+            }
         }
 
     private void FillIndex()

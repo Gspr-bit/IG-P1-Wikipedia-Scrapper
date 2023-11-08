@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace IG_P1_Wikipedia_Scrapper
 {
@@ -69,21 +70,38 @@ namespace IG_P1_Wikipedia_Scrapper
             
             return indexElements;
         }
+        
+        private static bool IsHeaderTag(HtmlNode node)
+        {
+            // Use a regular expression to match "h" followed by one or more digits
+            return Regex.IsMatch(node.Name, "h\\d");
+        }
 
         /**
-         * Encuentra el 
+         * Encuentra el parrafo bajo el id
          */
         private static string GetParagraph(HtmlDocument doc, string id)
         {
-            var paragraphHeader = doc.GetElementbyId(id);
-            string content = "";
+            if (id == "") return "";
             
-            for (var iterator = paragraphHeader.ParentNode.NextSibling;
-                 iterator != null && (iterator.Name == "#text" || iterator.Name == "figure" || iterator.Name == "p");
-                 iterator = iterator.NextSibling)
+            HtmlNode paragraphHeader = doc.GetElementbyId(id);
+            HtmlNode iterator = paragraphHeader.ParentNode.NextSibling;
+            
+            string content = iterator.OuterHtml;
+
+            while (iterator != null)
             {
-                if (iterator.Name != "p") continue;
-                content += iterator.InnerText.Trim()+'\n';
+                if (IsHeaderTag(iterator))
+                    break;
+
+                if (iterator.Name == "span")
+                {
+                    iterator = iterator.NextSibling;
+                    continue;
+                }
+
+                content += iterator.OuterHtml;
+                iterator = iterator.NextSibling;
             }
 
             return content;
