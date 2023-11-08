@@ -34,6 +34,48 @@ namespace IG_P1_Wikipedia_Scrapper
         }
 
         /**
+         * DFS implementation to retrieve the elements of the index including
+         * their level.
+         */
+        private static void ExploreIndex(HtmlNode node, int level, List<IndexElement> indexElements)
+        {
+            // Retrieve the first link in this node <a> tag with an href
+            HtmlNode element = node.SelectSingleNode(".//a[@href]");
+            
+            if (element == null)
+                return;
+            
+            // Add this link to the index elements list
+            string href = element.Attributes["href"].Value.Trim('#');
+            string text = "";
+
+            // Get only the text, it is located at the deepest tag.
+            var textNodes = node
+                .DescendantsAndSelf()
+                .Where(n => n.NodeType == HtmlNodeType.Text && n.InnerText.Trim() != "");
+
+            var textNodesArray = textNodes as HtmlNode[] ?? textNodes.ToArray();
+
+            for (int i = 0; i < textNodesArray.Length && i < 2; i++)
+            {
+                text += textNodesArray[i].InnerText.Trim() + ' ';
+            }
+            
+            indexElements.Add(new IndexElement(href, text, level));
+            
+            // Find if this node has more sub elements
+            HtmlNode subElements = node.SelectSingleNode(".//ul");
+            
+            if (subElements == null)
+                return;
+            
+            foreach (var subElement in subElements.ChildNodes)
+            {
+                ExploreIndex(subElement, level+1, indexElements);
+            }
+        }
+
+        /**
          * Encuentra el índice de la página de wikipedia y regresa un List con los nombres
          * y las url de las páginas
          * */
@@ -42,30 +84,14 @@ namespace IG_P1_Wikipedia_Scrapper
             List<IndexElement> indexElements = new List<IndexElement>();
 
             // Buscar el id del elemento que tiene el índice
-            HtmlNode docIndex = doc.GetElementbyId("mw-panel-toc-list");
-            
-            try
+            HtmlNode docIndex = doc.GetElementbyId("mw-panel-toc-list"); // <ul>
+
+            if (docIndex == null)
+                return indexElements;
+
+            foreach (var indexElement in docIndex.ChildNodes)
             {
-                // Encontrar todas las etiquetas <a>
-                var links = docIndex.SelectNodes(".//a[@href]");
-
-                foreach (var link in links)
-                {
-                    string href = link.Attributes["href"].Value.Replace("#", "");
-                    string text = "";
-
-                    var textNodes = link
-                        .DescendantsAndSelf()
-                        .Where(n => n.NodeType == HtmlNodeType.Text && n.InnerText.Trim() != "");
-                    if (textNodes.Any())
-                    {
-                        text = textNodes.Last().InnerText;
-                    }
-                    
-                    indexElements.Add(new IndexElement(href, text));
-                }
-            } catch (Exception ex) {
-                Console.WriteLine(ex.ToString());
+                ExploreIndex(indexElement, 0, indexElements);
             }
             
             return indexElements;
@@ -82,6 +108,7 @@ namespace IG_P1_Wikipedia_Scrapper
          */
         private static string GetParagraph(HtmlDocument doc, string id)
         {
+            // TODO if id is empty, we want the paragraphs at the beginning
             if (id == "") return "";
             
             HtmlNode paragraphHeader = doc.GetElementbyId(id);
@@ -113,7 +140,6 @@ namespace IG_P1_Wikipedia_Scrapper
             request.Credentials = CredentialCache.DefaultCredentials;
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Console.Write(response.StatusCode.ToString());
 
             if (response.StatusCode != HttpStatusCode.OK)
             {

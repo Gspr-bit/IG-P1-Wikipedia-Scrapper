@@ -6,11 +6,13 @@ namespace IG_P1_Wikipedia_Scrapper
     public struct IndexElement
     {
         public string Link, Text;
-
-        public IndexElement(string link, string text)
+        public int Level;
+        
+        public IndexElement(string link, string text, int level)
         {
             this.Link = link;
             this.Text = text;
+            this.Level = level;
         }
     }
     
