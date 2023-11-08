@@ -108,24 +108,24 @@ namespace IG_P1_Wikipedia_Scrapper
          */
         private static string GetParagraph(HtmlDocument doc, string id)
         {
-            // TODO if id is empty, we want the paragraphs at the beginning
-            if (id == "") return "";
+            HtmlNode paragraphHeader; 
+            if (id == "")
+            {
+                paragraphHeader = doc.GetElementbyId("mw-content-text").FirstChild.FirstChild;
+            }
+            else
+            {
+                paragraphHeader = doc.GetElementbyId(id).ParentNode;
+            }
             
-            HtmlNode paragraphHeader = doc.GetElementbyId(id);
-            HtmlNode iterator = paragraphHeader.ParentNode.NextSibling;
+            string content = paragraphHeader.OuterHtml;
             
-            string content = iterator.OuterHtml;
+            HtmlNode iterator = paragraphHeader.NextSibling;
 
             while (iterator != null)
             {
                 if (IsHeaderTag(iterator))
                     break;
-
-                if (iterator.Name == "span")
-                {
-                    iterator = iterator.NextSibling;
-                    continue;
-                }
 
                 content += iterator.OuterHtml;
                 iterator = iterator.NextSibling;

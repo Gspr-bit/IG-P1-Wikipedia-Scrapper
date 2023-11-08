@@ -34,31 +34,33 @@ namespace IG_P1_Wikipedia_Scrapper
             page = Scrapper.Query(TxtSearch.Text);
 
             FillData();
+            ShowParagraph("");
         }
 
         private void DeleteData()
         {
             TreeIndex.Nodes.Clear();
-            MainWebBrowser.DocumentText = "";
+            MainWebBrowser.Refresh();
         }
 
         private void FillData()
         {
             FillIndex();
-            ShowParagraph("");
         }
 
         private void ShowParagraph(string title)
         {
-            string text = "";
-            if (page.Paragraphs.TryGetValue(title, out text))
+            if (!page.Paragraphs.TryGetValue(title, out var text))
             {
-                // RtbMain.Text = text;
-                MainWebBrowser.DocumentText = text;
+                // If doesn't find the key, use the first value
+                text = page.Paragraphs.First().Value;
             }
+
+            string html = $"<html><body>{text}</body></html>";
+            MainWebBrowser.DocumentText = html;
         }
 
-    private void FillIndex()
+        private void FillIndex()
         {
             TreeNode root = new TreeNode("Índice");
 
@@ -80,7 +82,7 @@ namespace IG_P1_Wikipedia_Scrapper
                 }
                 else
                 {
-                    // it is ensured that a node with a lower level
+                    // it is granted that a node with a lower level
                     // is always going to exist
                     roots[indexElement.Level - 1].Nodes.Add(node);
                 }

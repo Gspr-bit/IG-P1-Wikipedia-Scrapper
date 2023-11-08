@@ -93,9 +93,9 @@
             // 
             this.PnlRight.Controls.Add(this.MainWebBrowser);
             this.PnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlRight.Location = new System.Drawing.Point(200, 0);
+            this.PnlRight.Location = new System.Drawing.Point(327, 0);
             this.PnlRight.Name = "PnlRight";
-            this.PnlRight.Size = new System.Drawing.Size(1015, 722);
+            this.PnlRight.Size = new System.Drawing.Size(888, 722);
             this.PnlRight.TabIndex = 1;
             // 
             // MainWebBrowser
@@ -104,7 +104,7 @@
             this.MainWebBrowser.Location = new System.Drawing.Point(0, 0);
             this.MainWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.MainWebBrowser.Name = "MainWebBrowser";
-            this.MainWebBrowser.Size = new System.Drawing.Size(1015, 722);
+            this.MainWebBrowser.Size = new System.Drawing.Size(888, 722);
             this.MainWebBrowser.TabIndex = 0;
             // 
             // PnlLeft
@@ -114,7 +114,7 @@
             this.PnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.PnlLeft.Location = new System.Drawing.Point(0, 0);
             this.PnlLeft.Name = "PnlLeft";
-            this.PnlLeft.Size = new System.Drawing.Size(200, 722);
+            this.PnlLeft.Size = new System.Drawing.Size(327, 722);
             this.PnlLeft.TabIndex = 0;
             // 
             // TreeIndex
@@ -122,7 +122,7 @@
             this.TreeIndex.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TreeIndex.Location = new System.Drawing.Point(0, 0);
             this.TreeIndex.Name = "TreeIndex";
-            this.TreeIndex.Size = new System.Drawing.Size(200, 722);
+            this.TreeIndex.Size = new System.Drawing.Size(327, 722);
             this.TreeIndex.TabIndex = 1;
             this.TreeIndex.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeIndex_AfterSelect);
             // 
