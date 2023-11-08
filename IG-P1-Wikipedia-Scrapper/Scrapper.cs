@@ -20,6 +20,7 @@ namespace IG_P1_Wikipedia_Scrapper
 
             // Obtener el documento HTML
             HtmlDocument doc = MakeRequest(url);
+            FixImagesUris(doc);
             // Obtener el índice de la página
             page.Index = PageIndex(doc);
             
@@ -31,6 +32,23 @@ namespace IG_P1_Wikipedia_Scrapper
             }
             
             return page;
+        }
+
+        private static void FixImagesUris(HtmlDocument doc)
+        {
+            HtmlNodeCollection imageNodes = doc.DocumentNode.SelectNodes("//img");
+
+            if (imageNodes == null)
+            {
+                return;
+            }
+            
+            foreach (var imageNode in imageNodes)
+            {
+                string originalSrc = imageNode.GetAttributeValue("src", "");
+
+                imageNode.SetAttributeValue("src", "https:" + originalSrc);
+            }
         }
 
         /**
