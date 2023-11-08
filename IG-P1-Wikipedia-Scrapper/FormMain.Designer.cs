@@ -106,6 +106,7 @@
             this.MainWebBrowser.Name = "MainWebBrowser";
             this.MainWebBrowser.Size = new System.Drawing.Size(888, 722);
             this.MainWebBrowser.TabIndex = 0;
+            this.MainWebBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.MainWebBrowser_Navigating);
             // 
             // PnlLeft
             // 

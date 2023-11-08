@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -116,6 +117,52 @@ namespace IG_P1_Wikipedia_Scrapper
         private void TxtSearch_Click(object sender, EventArgs e)
         {
             TxtSearch.SelectAll();
+        }
+
+        private void MainWebBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+        {
+            string uri = e.Url.ToString();
+            
+            Console.WriteLine(uri);
+
+            if (uri != "about:blank")
+            {
+                e.Cancel = true;
+                
+                // Check if it's a wikipedia Link
+                if (uri.Contains("about:/wiki/"))
+                {
+                    // Extract the page name
+                    string pageName = uri.Replace("about:/wiki/", "");
+                    // Make a query with this new page
+                    TxtSearch.Text = pageName.Replace('_', ' ');
+                    UpdateData();
+                }
+                else if(uri.StartsWith("about:blank#"))
+                {
+                    // Check if it's a link to the same page
+                    string paragraphName = uri.Replace("about:blank#", "");
+                    ShowParagraph(paragraphName);
+                }
+                else
+                {
+                    // Open in default browser
+                    OpenUrlInDefaultBrowser(uri);
+                }
+            }
+        }
+        
+        private void OpenUrlInDefaultBrowser(string url)
+        {
+            try
+            {
+                Process.Start(url);
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that may occur
+                Console.WriteLine("Cannot open url: " + url + '\n' + ex.Message);
+            }
         }
     }
 }
