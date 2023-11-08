@@ -24,6 +24,11 @@ namespace IG_P1_Wikipedia_Scrapper
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            UpdateData();
+        }
+
+        private void UpdateData()
+        {
             DeleteData();
 
             page = Scrapper.Query(TxtSearch.Text);
@@ -34,6 +39,7 @@ namespace IG_P1_Wikipedia_Scrapper
         private void DeleteData()
         {
             TreeIndex.Nodes.Clear();
+            MainWebBrowser.DocumentText = "";
         }
 
         private void FillData()
@@ -90,6 +96,24 @@ namespace IG_P1_Wikipedia_Scrapper
         {
             string selectedIndex = TreeIndex.SelectedNode.Text;
             ShowParagraph(selectedIndex);
+        }
+
+        private void TxtSearch_Enter(object sender, EventArgs e)
+        {
+            TxtSearch.SelectAll();
+        }
+
+        private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                UpdateData();
+            }
+        }
+
+        private void TxtSearch_Click(object sender, EventArgs e)
+        {
+            TxtSearch.SelectAll();
         }
     }
 }

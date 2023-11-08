@@ -33,11 +33,11 @@
             this.PnlMain = new System.Windows.Forms.Panel();
             this.PnlBottom = new System.Windows.Forms.Panel();
             this.PnlRight = new System.Windows.Forms.Panel();
+            this.MainWebBrowser = new System.Windows.Forms.WebBrowser();
             this.PnlLeft = new System.Windows.Forms.Panel();
             this.TreeIndex = new System.Windows.Forms.TreeView();
             this.label1 = new System.Windows.Forms.Label();
             this.PnlTop = new System.Windows.Forms.Panel();
-            this.MainWebBrowser = new System.Windows.Forms.WebBrowser();
             this.PnlMain.SuspendLayout();
             this.PnlBottom.SuspendLayout();
             this.PnlRight.SuspendLayout();
@@ -47,16 +47,23 @@
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(12, 12);
+            this.TxtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TxtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtSearch.Location = new System.Drawing.Point(0, 0);
             this.TxtSearch.Name = "TxtSearch";
-            this.TxtSearch.Size = new System.Drawing.Size(100, 20);
+            this.TxtSearch.Size = new System.Drawing.Size(1140, 52);
             this.TxtSearch.TabIndex = 0;
+            this.TxtSearch.Click += new System.EventHandler(this.TxtSearch_Click);
+            this.TxtSearch.Enter += new System.EventHandler(this.TxtSearch_Enter);
+            this.TxtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyUp);
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Location = new System.Drawing.Point(1128, 12);
+            this.BtnSearch.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnSearch.Location = new System.Drawing.Point(1140, 0);
             this.BtnSearch.Name = "BtnSearch";
-            this.BtnSearch.Size = new System.Drawing.Size(75, 23);
+            this.BtnSearch.Size = new System.Drawing.Size(75, 52);
             this.BtnSearch.TabIndex = 1;
             this.BtnSearch.Text = "Buscar";
             this.BtnSearch.UseVisualStyleBackColor = true;
@@ -90,6 +97,15 @@
             this.PnlRight.Name = "PnlRight";
             this.PnlRight.Size = new System.Drawing.Size(1015, 722);
             this.PnlRight.TabIndex = 1;
+            // 
+            // MainWebBrowser
+            // 
+            this.MainWebBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainWebBrowser.Location = new System.Drawing.Point(0, 0);
+            this.MainWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.MainWebBrowser.Name = "MainWebBrowser";
+            this.MainWebBrowser.Size = new System.Drawing.Size(1015, 722);
+            this.MainWebBrowser.TabIndex = 0;
             // 
             // PnlLeft
             // 
@@ -128,15 +144,6 @@
             this.PnlTop.Name = "PnlTop";
             this.PnlTop.Size = new System.Drawing.Size(1215, 52);
             this.PnlTop.TabIndex = 2;
-            // 
-            // MainWebBrowser
-            // 
-            this.MainWebBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainWebBrowser.Location = new System.Drawing.Point(0, 0);
-            this.MainWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.MainWebBrowser.Name = "MainWebBrowser";
-            this.MainWebBrowser.Size = new System.Drawing.Size(1015, 722);
-            this.MainWebBrowser.TabIndex = 0;
             // 
             // FormMain
             // 
